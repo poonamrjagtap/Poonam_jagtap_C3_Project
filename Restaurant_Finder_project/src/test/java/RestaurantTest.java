@@ -70,6 +70,20 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ @Test
+    public void get_total_order_should_be_equal_to_addition_of_price_from_ordered_menu(){
+        List<String> item_name=new ArrayList<>();
+        item_name.add("Sweet corn soup");
+        item_name.add("Vegetable lasagne");
+        int price=restaurant.getTotalOrderAmount(item_name);
+        List<Item >menu =  restaurant.getMenu();
+        assertEquals(388,price);
+    }
+    @Test
+    public void total_order_value_should_be_zero_when_cart_is_empty(){
+        List<String> selectedItems = new ArrayList<String>();
+        assertEquals(0,restaurant.getTotalOrderAmount(selectedItems));
+    }
   
 
 }
